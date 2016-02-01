@@ -1,0 +1,48 @@
+\documentclass{scrartcl}
+\usepackage{amsmath,amssymb,commath}
+\setkomafont{disposition}{\normalfont\bfseries}
+
+\title{Number Theory}
+\subtitle{Homework 1:\\2.2) 8\\2.3) 2c, 2d, 4a}
+\author{Kenny Roffo}
+\date{Due February 1, 2016}
+
+\begin{document}
+\maketitle
+
+\textbf{8)} Prove that no integer in the following sequence is a perfect square: 11, 111, 1111, 11111, ...\\
+
+This sequence can be defined by $a_i$ where $a_1=11$ and $a_{i+1}=a_i\times10+1$. Let $P(n)$ be the statement $a_n$ is of the form $4k+3$. $P(1)$ is true, since 11, is of the form $4k+3$ ($k=2$). Now let $j\ge1$ and assume $P(j)$ to be true. Then $a_j = 4k+3$ for some integer $k$. Thus we see
+\begin{align*}
+  a_{j+1} &= \left(4k+1\right)\cdot10 + 1\\
+  &= 40k + 8 + 3\\
+  &= 4(10k+2) + 3
+\end{align*}
+so $a_{j+1}$ is of the form $4k+3$, thus by mathematical induction every term of the sequence is of the form $4k+3$. It was shown in class that all perfect squares are of the form either $4k$ or $4k+1$, thus no number in the sequence is a perfect square. (This was shown by squaring the general forms $4k, 4k+1, 4k+2$ and $4k+3$, one of which any given number can be written as, and showing that the squares of these can only be of the form either $4k$ or $4k+1$).\\
+
+\textbf{2c)} Given integers $a,b,c$ show $a|b$ if and only if $ac|bc$, where $c\ne0$.\\
+
+Assume $a|b$. Then $a\ne0$ and $ax=b$ for some $x\in\mathbb{Z}$. Clearly $(ax)c=(b)c$, thus $(ac)x=bc$. Since neither $a$ nor $c$ are zero, $ac$ is not zero, therefore $ac|bc$.
+Now assume $ac|bc$. Then $(ac)y=bc$ for some $y\in\mathbb{Z}$. Dividing by $c$, we see $ay=b$. Since $ac|bc$, $a$ cannot be zero, thus $a|b$.
+Since each condition implies the other, we have shown that given integers $a,b,c$ show $a|b$ if and only if $ac|bc$, where $c\ne0$.\pagebreak
+
+\textbf{2d)} Given integers $a,b,c,d$, show if $a|b$ and $c|d$ then $ac|bd$.\\
+
+Assume $a|b$ and $c|d$. Then $ax=b$ and $cy=d$ for integers $x$ and $y$, and $a$ and $c$ are non-zero. We see
+\begin{align*}
+  bd &= (ax)(cy)\\
+  &= (ac)(xy)
+\end{align*}
+Thus $ac|bd$.\\
+
+\textbf{4a)} For $n\ge1$, use mathematical induction to establish that $8|5^{2n}+7$.\\
+
+Let $P(n)$ be the statement $8|5^{2n}+7$. We see $5^{2(1)}+7 = 32$, which is divisible by 8 since $8(4)=32$, so $P(1)$ is true. Now let $k\ge1$ and assume $P(k)$ to be true. Then $8|5^{2k}+7$, so $8t=5^{2k}+7$ for some integer $t$. We see
+\begin{align*}
+  &(5^2)8t = 5^2\left(5^{2k}+7\right)\\
+  \implies &200t - 168 = 5^{2(k+1)}+7\\
+  \implies &8\left(25t - 21\right) = 5^{2(k+1)}+7
+\end{align*}
+Thus $8|5^{2(k+1)}+7$, so $P(k+1)$ is true! Therefore, by the principle of mathematical induction $P(n)$ is true for all positive $n$, so for $n\ge1$, $8|5^{2n}+1$.
+
+\end{document}
