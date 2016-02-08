@@ -1,0 +1,67 @@
+\documentclass{scrartcl}
+\usepackage{amsmath,amssymb,commath}
+\setkomafont{disposition}{\normalfont\bfseries}
+
+\title{Number Theory}
+\subtitle{Homework 2: The $\frac{a}{b} + \frac{c}{d}$ Problem and 2.3) 14a, 19c, 23}
+\author{Kenny Roffo}
+\date{Due February 8, 2016}
+
+\begin{document}
+\maketitle
+
+\textbf{The $\frac{a}{b} + \frac{c}{d}$ Problem)} Let $a,b,c,d\in\mathbb{Z}$ with $(a,b)=1$ and $(c,d)=1$. Prove if $\frac{a}{b}+\frac{c}{d}$ is an integer, then $b=d$.\\ 
+
+Assume $\frac{a}{b}+\frac{c}{d} = x$ where $x\in\mathbb{Z}$. Multiplying through by $bd$ we see $ad+cb = xbd$. Now we see
+\begin{align*}
+  ad &= xbd - cb\\
+  &= \left(xd-c\right)b
+\end{align*}
+Since $x,d,c$ are integers, this means $b|ad$. Since $a$ and $b$ are relatively prime, $b$ cannot divide $a$, thus by a lemma from class, it must be the case that $b|d$.
+
+We can now use the same strategy as before to show the converse. Starting from $ad+cb = xbd$ we see
+\begin{align*}
+  bc &= xbd - ad\\
+  &= \left(xb-a\right)d
+\end{align*}
+so $d|bc$ which means (since $d$ and $c$ are relatively prime) $d|b$.
+
+We have shown that $d|b$ and $b|d$ thus we have shown that $b=d$.\\
+
+\textbf{14a)} Show that for any integer $a$, $\text{gcd}(2a+1,9a+4)=1$.\\
+
+It was shown in class that if $ax+by=1$ with $a,x,b,y\in\mathbb{Z}$ then $(a,b)=1$. Let $a$ be any integer. If we can find integers $x$ and $y$ such that $(2a+1)x+(9a+4)y=1$, we will have shown that $(2a+1,9a+4)=1$. Consider $x=9, y=-2$. We see
+\begin{align*}
+  (2a+1)(9) + (9a+4)(-2) &= 18a + 9 - 18a - 8\\
+  &= 1
+\end{align*}
+Thus it must be the case that for any integer $a$, $\text{gcd}(2a+1,9a+4)=1$.\\
+
+\textbf{19c)} Establish if $a$ and $b$ are odd integers, then $8|\left(a^2-b^2\right)$.\\
+ 
+Let $a$ and $b$ be odd integers. Then there exist integers $x$ and $y$ such that $a=2x+1$ and $b=2y+1$. We will show that $8|\left(a^2-b^2\right)$ by finding a number $c$ such that $8c = a^2-b^2$. Observe:
+\begin{align*}
+  a^2-b^2 &= \left(2x+1\right)^2 - \left(2y+1\right)^2\\
+  &= 4x^2 + 4x + 1 - 4y^2 - 4y - 1\\
+  &= 8\left(\frac{1}{2}\left(x^2-x\right)\right) - 8\left(\frac{1}{2}\left(y^2-y\right)\right)\\
+\end{align*}
+From here we must use the facts that an odd integer's square is odd (this can easily be checked) and that the sum of two odd integers or two even integers is even. Note that since $x$ and $y$ are integers, they are even or odd, thus the sums $x^2+x$ and $y^2+y$ are both even. Thus we will let $2n=x^2+x$ and $2m=y^2+y$, which is true for some integers $n$ and $m$ by definition of even. Now, we return to the equality:
+\begin{align*}
+  a^2-b^2 &=  8\left(\frac{1}{2}\left(x^2-x\right)\right) - 8\left(\frac{1}{2}\left(y^2-y\right)\right) \text{\hspace{0.5in} (as shown above)}\\
+  &= 8\left(\frac{1}{2}\left(2n\right)\right)  - 8\left(\frac{1}{2}\left(2m\right)\right)\\
+  &= 8n - 8m\\
+  &= 8\left(n - m\right)
+\end{align*}
+where $n-m$ is an integer since integers are closed under subtraction. We have just shown that there exists an integer, namely $n-m$, such that
+$8(n-m)=a^2-b^2$, thus we have shown that $8|\left(a^2-b^2\right)$.\\
+
+\textbf{23)} If $a|bc$, show that $a|\text{gcd}(a,b)\text{gcd}(a,c)$.\\
+
+Let $a,b,c\in\mathbb{Z}$ with $a|bc$. By a lemma shown in class, for integers $x$ and $y$ there exist integers $m$ and $n$ such that $(x,y) = xm+yn$. Thus $(a,b) = as+bt$ for some integers $s$ and $t$, and $(a,c) = au+cv$ for some integers $u$ and $v$. We see
+\begin{align*}
+  (a,b)(a,c) &= (as+bt)(au+cv)\\
+  &= a^2su + ascv + aubt + btcv
+\end{align*}
+It is obvious that $a$ divides the first three terms here, and since it was assumed $a|bc$, we know $a|btcv$. This implies that $a$ divides all four terms, thus $a|(a,b)(a,c)$.
+
+\end{document}
