@@ -1,0 +1,109 @@
+\documentclass{scrartcl}
+\usepackage{amsmath,amssymb,commath}
+\setkomafont{disposition}{\normalfont\bfseries}
+
+\title{Number Theory}
+\subtitle{Homework 3}
+\author{Kenny Roffo}
+\date{Due February 15, 2016}
+
+\begin{document}
+\maketitle
+
+\textbf{2.5 5a)} A man has \$4.55 in change composed entirely of dimes and quarters. What are the maximum and minimum number of coins that he can have? Is it possible for the number of dimes to equal the number of quarters?\\
+
+Let $a = 10$ and $b = 25$ represent dimes and quarters respectively. We find the gcd of $a$ and $b$ by the Euclidean Algorithm:
+\begin{align*}
+  25 &= 10(2) + 5\\
+  10 &= 5(2) + 0
+\end{align*}
+so then $(a,b) = 5$.Note that by rearranging the first step in the process we see $25(1) + 10(-2) = 5$. Now if we multiply both sides by 91 we see $$25(91) + 10(-182) = 455$$ Thus we have a particular solution to the equation $25x_0+10y_0 = 455$, namely $x_0=91, y_0=-182$. By a theorem from class, all solutions are given by
+\begin{align*}
+  x &= x_0 + \frac{b}{(a,b)}t = 91 + 2t\\
+  y &= y_0 - \frac{a}{(a,b)}t = -182 - 5t
+\end{align*}
+We require that both $x$ and $y$ be positive, so we find conditions for $t$ to make each of $x$ and $y$ non-negative:\\
+\begin{minipage}{0.45\linewidth}
+  \begin{align*}
+    &0 \le 91 + 2t\\
+    \implies&-2t \le 91\\
+    \implies&t \ge -45.5
+  \end{align*}
+\end{minipage}
+\begin{minipage}{0.45\linewidth}
+  \begin{align*}
+    &0 \le -182 - 5t\\
+    \implies&182 \le -5t\\
+    \implies&-36.4 \ge t
+  \end{align*}
+\end{minipage}
+\ \\
+That is, for both $x$ and $y$ to be non-negative it must be the case that $-45.5 \le t \le -36.4$. Now to find the maximum and minimum number of coins we think: The maximum number of coins would be to have the largest possible number of smaller valued coins. Thus we want to maximize $y$, which we see upon inspection of theequation for $y$ occurrs when $t$ is the least it can be. In this case, that means $t = -45$ (remember, $t$ must be an integer). In this case we see\\
+
+\begin{minipage}{0.45\linewidth}
+  $x = 91 + 2(-45) = 1$
+\end{minipage}
+\begin{minipage}{0.45\linewidth}
+  $y = -182 - 5(-45) = 43$
+\end{minipage}\\
+
+so the maximum number of coins is 44. Now for the minimum number of coins we would want to maximize the number of largest valued coins. That means we want $t$ to be maximal, so $t=-37$. We have\\
+
+\begin{minipage}{0.45\linewidth}
+  $x = 91 + 2(-37) = 17$
+\end{minipage}
+\begin{minipage}{0.45\linewidth}
+  $y = -182 - 5(-37) = 3$
+\end{minipage}\\
+
+so the minimum number of coins is 20. For $x$ and $y$ to be equal we solve for $t$ in setting their equations equal:
+\begin{align*}
+  &91 + 2t = -182 - 5t\\
+  \implies&273 = -7t\\
+  \implies&-39 = t
+\end{align*}
+Thus when $t = -39$ we have the same number of quarters and dimes.\\
+
+\textbf{4.2 8d)} Prove that for any integer $a$, $a^4 \equiv 0$ or $1$ (mod 5).\\
+
+Let $a$ be an integer. Then $a = 5k+n$ where $n\in\{0,1,2,3,4\}$ by the division algorithm. We see
+\begin{align*}
+  a^2 &= 5^2k^2 + 5\cdot2nk + n^2\\
+  &= 5\left(5k^2+2nk\right) + n^2\\
+  &= 5j+n^2
+\end{align*}
+where $j=5k^2+2nk$ and is an integer by the closure laws. Now we see ${a^2}^2=a^4$, so we have
+\begin{align*}
+  a^4 &= \left(5j+n^2\right)^2
+  &= 5\left(5j^2+2n^2j\right) + n^4\\
+  &= 5t + n^4
+\end{align*}
+where $t=5j^2+2n^2j$ and is an integer by the closure laws. What we have shown so far is that $a^4 = 5t + n^4$. Now, for $a^4 \equiv 0$ or 1 (mod 5) to hold, we must have either $5 | 5t + n^4$ or $5 | 5t + n^4 - 1$. We will now consider each case for $n$.\\
+
+For $n=0$, $5t+0^4=5t$. Since $5|5t-0$, so $a^4 \equiv 0$ (mod 5).\\
+
+For $n=1$, $5t+1^4=5t+1$. Since $5t+1-1=5t$ so $5|5t+1-1$, thus $a^4 \equiv 1$ (mod 5).\\
+
+For $n=2$, $5t+2^4=5t+16$. We see $5t+16-1=5(t+3)$, so $5|5t+16-1$, and $a^4 \equiv 1$ (mod 5).\\
+
+For $n=3$, $5t+3^4=5t+81$. We see $5t+81-1=5(t+16)$, so $5|5t+81-1$, thus $a^4 \equiv 1$ (mod 5).\\
+
+For $n=4$, $5t+4^4=5t+256$. We see $5t+256-1=5(t+51)$, so $5|5t+256-1$, and so we have $a^4 \equiv 1$ (mod 5).\\
+
+In any case, we have shown that $a^4 \equiv 0$ or 1 (mod 5). Thus for any integer $a$, $a^4 \equiv 1$ (mod 5).\\
+
+\textbf{4.2 13)} Verify that if $a \equiv b$ (mod $n_1$) and $a \equiv b$ (mod $n_2$), then $a \equiv b$ (mod $n$), where the integer $n=\text{lcm}(n_1,n_2)$.\\
+ 
+Let $a,bn_1,n_2,n\in\mathbb{Z}$ with $n = [n_1,n_2]$, $a \equiv b$ (mod $n_1$) and $a \equiv b$ (mod $n_2$). Then $n_1x=(a-b)$ and $n_2y=(a-b)$ by definition of congruent modulo $n$. Also $n_2|n$ since $n$ is a multiple of $n_2$, and $n|n_1n_2$ since $n=[n_1,n_2]$. We see
+\begin{align*}
+  &n_1x = (a-b)\\
+  \implies&n_1xn_2y = (a-b)n_2y\\
+  \implies&nqx = (a-b)n_2 \text{\hspace{1in} $q\in\mathbb{Z}$, since $n | n_1n_2$}
+\end{align*}
+Now, since $n_2|n$, either $n=n_2$ or $n>n_2$. If $n=n_2$, then obviously $n|(a-b)$. If $n>n_2$, then there is a reason which I have not figured out for which it must be the case that $n|(a-b)$. Either way, $n|(a-b)$, thus $a \equiv b$ (mod $n$).\\
+
+\textbf{Another Problem)} Prove that for every positive integer $n$ it's true that $\text{lcm}(9n+8,6n+5)=54n^2+93n+40$\\
+
+LTP
+
+\end{document}
