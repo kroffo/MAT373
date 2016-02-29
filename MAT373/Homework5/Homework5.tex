@@ -1,0 +1,74 @@
+\documentclass{scrartcl}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,commath}
+\setkomafont{disposition}{\normalfont\bfseries}
+
+\title{Number Theory}
+\subtitle{Homework 5}
+\author{Kenny Roffo}
+\date{Due February 29, 2016}
+
+\begin{document}
+\maketitle
+
+\textbf{1)} Let $p$ and $q$ be distinct odd primes. Prove that $n=pq$ is not perfect.\\
+
+Since $p$ and $q$ are odd, there exist integers $x$ and $y$ such that $p=2x+1$ and $q=2y+1$. Thus we can find $n$ in terms of $x$ and $y$:
+\begin{align*}
+  n &= pq\\
+  &= (2x+1)(2y+1)\\
+  &= 4xy+2x+2y+1
+\end{align*}
+Now, for the sake of contradiction, let us assume that $n$ is perfect. That would mean that $n$ is equal to the sum of its positive divisors except itself. Since $p$ and $q$ are prime, they along with 1 and $n$ are the only positive divisors of $n$ (by the uniqueness of prime factorizations). Thus $n=1 + p + q$ and we examine this equality:
+\begin{align*}
+  &n = 1 + p + q\\
+  \implies &4xy+2x+2y+1 = 1 + (2x+1) + (2y+1)\\
+  \implies &2(2xy+x+y) + 1 = 2(x + y + 1) + 1\\
+  \implies &2xy+x+y = x+y+1\\
+  \implies &2xy = 1\\
+  \implies & x = \frac{1}{2y}
+\end{align*}
+So $x$ is not an integer, since 1 divided by any positive integer other than itself is not an integer. This contradicts that $x$ is actually an integer, thus our assumption that $n$ is perfect must be false, so in fact $n$ is not perfect.\\
+
+\textbf{2)} Find the digits $X$ and $Y$ if $$495 | 273X49Y5$$\\
+
+We begin by examining 495. Its prime factorization is $495=3^2\cdot5\cdot11$. Thus 273X49Y5 must be divisible by 3, 5 and 11. It is obviously divisible by 5, but what about 3 and 11? We discussed several decimal representation divisibility rules in class, including when a number is divisible by 11 or 3. 
+
+273X49Y5 is divisible by 11 exactly the alternating sum of its digits is divisible by 11. We see:
+$$ 5-Y+9-4+X-3+7-2 = 12 + X - Y $$
+Thus we know $11 | 12 + X - Y$, so $11n = 12 + X - Y$, and thus $11m = 1 + X - Y$, where $m=n-1$. Now, since $X$ and $Y$ are digits, the maximum value of $1 + X - Y$ is 10 and the minimum is -8. This implies $m=0$, which further implies $Y=X+1$.
+
+Now, what about 3? Well, since there are actually 2 threes in the prime factorization of 495, it will prove more helpful to use $3^2=9$. 273X49Y5 is divisible by 9 exactly when the sum of its digits is divisible by 9. We see:
+$$ 5 + Y + 9 + 4 + X + 3 + 7 + 2 = 30 + X + Y $$
+Thus $9s = 30 + X + Y$ so $9t = 3 + X + Y$ where $t=s-3$. Plugging in $X+1$ for $Y$ we have $9t = 3 + 2X + 1$. Examining, it becomes clear that there is only one digit that fits this description: 7. Thus $X=7$ and $Y=8$.\\
+
+
+\textbf{3)} Prove that there is no integer $n$ for which $\phi(n) = 14$.\\
+
+Let $n$ be an integer. Then $n$ has prime factorization $p_1^{e_1}p_2^{e_2} ... p_k^{e_k}$ where all $p_i$ are prime and $e_i$ are positive integers. Thus
+\begin{align*}
+  \phi(n) &= \phi\left(p_1^{e_1}\right)\phi\left(p_2^{e_2}\right)...\phi\left(p_k^{e_k}\right)\\
+  &= p_1^{e_1-1}\left(p_1-1\right)p_2^{e_2-1}\left(p_2-1\right)...p_k^{e_k-1}\left(p_k-1\right)
+\end{align*}
+Now for the sake of contradiction let us assume $\phi(n)=14$. 14 has prime factorization $2^1\cdot7^1$, thus some $p_s$ must be 7:
+$$\phi(n) = p_1^{e_1-1}\left(p_1-1\right)p_2^{e_2-1}\left(p_2-1\right)...7^{e_s-1}\left(6\right)...p_k^{e_k-1}\left(p_k-1\right)$$
+But now we have $14 = 2\cdot7 = 2\cdot3\cdot m$ where $m$ is equal to all of the above product except the 6, and is a positive integer, since a prime either minus 1 or raised to a power of 0 or more will both always be a positive integer. But this contradicts the uniqueness of prime factorizations, so our assumption that $\phi(n)=14$ must be impossible. Therefore there is no integer $n$ such that $\phi(n)=14$.\\\ \\
+(Note that non-positive integers are not in the domain of $\phi$)\\
+
+\textbf{4)} Suppose that $n$ is an even perfect number. Prove that $\phi(n)$ is not perfect.\\
+
+Since $n$ is an even perfect number, it can be written as $$n = 2^{m-1}\left(2^m-1\right)$$ where $m$ is an integer, and $2^m-1$ is prime. Thus $2^{m-1}$ and $2^m-1$ are relatively prime, so by a theorem shown in class $$\phi(n)=\phi\left(2^{m-1}\left(2^m-1\right)\right) = \phi\left(2^{m-1}\right)\phi\left(2^m-1\right)$$ We know that $\phi(p^k)=p^{k-1}(p-1)$ where $p$ is prime, $k\in\mathbb{Z}$, thus
+$$\phi\left(2^{m-1}\right)=2^{m-2}\left(2-1\right) \text{\hspace{0.5in}and\hspace{0.5in}} \phi\left(2^m-1\right)=\left(2^m-1\right)^0\left(2^m-2\right)$$
+Thus
+\begin{align*}
+  \phi(n) &= 2^{m-2}\left(2^m-2\right)\\
+  &= 2^{m-1}\left(2^{m-1}-1\right)\\
+  &= 2\left(2^{m-2}\left(2^{m-1}-1\right)\right)
+\end{align*}
+Clearly $\phi(n)$ is even, so it is certainly not an odd perfect number. Now assume it is an even perfect number. Then there exists an integer $s$ such that $\phi(n) = 2^{s-1}\left(2^s-1\right)$ where $2^s-1$ is prime. Before proceeding, we must show that $s$ is smaller than $m$. Clearly $s$ cannot be equal to $m$. Now assume $s>m$. Then $2^{s-1} > 2^{m-1}$ and $2^s-1 > 2^{m-1}-1$ so it is impossible for $2^{m-1}\left(2^{m-1}-1\right) = \phi(n) = 2^{s-1}\left(2^s-1\right)$ Thus $s$ must be smaller than $m$
+\begin{align*}
+  &2^{s-1}\left(2^s-1\right) = 2^{m-1}\left(2^{m-1}-1\right)\\
+  \implies & 2^s-1 = 2^{m-s}\left(2^{m-1}-1\right)
+\end{align*}
+So $2^s-1$ can be written as a product of integers other than 1 and itself (since $s < m$, $2^{m-s}$ is an integer and is greater than 1), which contradicts that it is prime. Thus $\phi(n)$ cannot be an even perfect number. So $\phi(n)$ is not a perfect number.
+\end{document}
