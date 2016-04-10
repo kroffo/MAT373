@@ -1,0 +1,80 @@
+\documentclass{scrartcl}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,commath}
+\setkomafont{disposition}{\normalfont\bfseries}
+\renewcommand{\mod}[1]{\text{ (mod $#1$)}}
+
+\title{Number Theory}
+\subtitle{Homework 9}
+\author{Kenny Roffo}
+\date{Due April 11, 2016}
+
+\begin{document}
+\maketitle
+
+\textbf{1)} Prove that in a primitive Pythagorean triple $x, y, z$ the product $xy$ is divisible by 12, hence $60|xyz$.\\
+
+Let $x,y,z$ be a primitive Pythagorean triple defined by integers $s$ and $t$. Note that if $xy$ is divisible by 3 and by 4, then $xy$ must be divisible by 12. We see $$xy = 2st(s^2-t^2)$$ Since one of $s$ and $t$ is even, $xy$ is either $4at(s^2-t^2)$ or $4bs(s^2-t^2)$ where $a$ and $b$ are integers. Thus 4 divides $xy$. We must now prove that 3 divides $xy$. Note that if $3|s$ or $3|t$ then $3|x$ hence $3|xy$. However, if 3 divides neither of $s$ and $t$, then by Fermat's Theorem we have $$s^2\equiv1\mod{3} \text{\hspace{1in}and\hspace{1in}} t^2\equiv1\mod{3}$$ and thus $$y=s^2-t^2\equiv0\mod{3}$$ and so $3|y$, which means $3|xy$. Therefore, both 3 and 4 divide $xy$, so 12 divides $xy$.\\
+
+%Now we must show that $60|xyz$.
+
+
+\textbf{2)} Verify that 3, 4, 5 is the only primitive Pythagorean triple involving consecutive positive integers.\\
+
+Let $n, n+1, n+2$ three consecutive positive integers. For these to form a Pythagorean triple, it would have to be the case that
+$$n^2 + \left(n+1\right)^2 = \left(n+2\right)^2$$
+Solving for $n$, we see:
+\begin{flalign*}
+  && n^2 + \left(n+1\right)^2 &= \left(n+2\right)^2 &\\
+  \implies && n^2 + n^2 + 2n + 1 &= n^2 + 4n + 4 &\\
+  \implies && n^2 - 2n - 3 &= 0 &\\
+  \implies && \left(n-3\right)\left(n+1\right) &= 0 &\\
+  \implies && n &\in \{-1,3\} &
+\end{flalign*}
+
+Using basic algebra along with the fact that $n$ must be positive, we find that $n$ must be 3. Therefore, since we know 3,4,5 is a primitive Pythagorean triple we know that 3, 4, 5 is the only primitive Pythagorean triple invovling consecutive positive integers.\pagebreak
+
+\textbf{3)} Find all primitive Pythagorean triples containing 60.\\
+
+Since 60 is even, we must have $x=2st=60\implies st=30$. Now we examine possibilities for $s$ and $t$. Exactly one of the two must be even, and they must be relatively prime. Note that we will also make $s$ the larger of the two since otherwise we will repeat a PPT with $y$ negative.
+$s=30, t=1$:
+\begin{align*}
+  x &= 2st = 2(30)(1) = 60\\
+  y &= s^2-t^2 = 30^2 - 1^2 = 899\\
+  z &= s^2+t^2 = 30^2 + 1^2 = 901
+\end{align*}
+$s=15, t=2$:
+\begin{align*}
+  x &= 2st = 2(15)(2) = 60\\
+  y &= s^2-t^2 = 15^2 - 2^2 = 221\\
+  z &= s^2+t^2 = 15^2 + 2^2 = 229
+\end{align*}
+$s=10, t=3$:
+\begin{align*}
+  x &= 2st = 2(10)(3) = 60\\
+  y &= s^2-t^2 = 10^2 - 3^2 = 91\\
+  z &= s^2+t^2 = 10^2 + 3^2 = 109
+\end{align*}
+$s=6, t=5$:
+\begin{align*}
+  x &= 2st = 2(6)(5) = 60\\
+  y &= s^2-t^2 = 6^2 - 5^2 = 11\\
+  z &= s^2+t^2 = 6^2 + 5^2 = 61
+\end{align*}\\
+
+\textbf{4)} Find all primitive Pythagorean triples containing 61.\\
+
+Since $61$ is odd, either $y=61$ or $z=61$. First we will consider when $y=61$. Since 61 is prime, $$y=(s-t)(s+t)=61$$ implies that $s-t=1$ and $s+t=61$. Thus $2s=62\implies s=31$, thus $t=30$. In this case we have
+\begin{align*}
+  x &= 2st = 2(31)(30) = 1860\\
+  y &= s^2-t^2 = 31^2 - 30^2 = 61\\
+  z &= s^2+t^2 = 31^2 + 30^2 = 1861
+\end{align*}
+Now we consider the case where $z=61$. We must find $s$ and $t$ such that exactly one of them is even, and they are relatively prime, and the sum of their squares is 61 (since $z=s^2+t^2$). To find these we simply start from $s=1$ and find what $t$ must be for $s^2+t^2$ to be equal to 61, and if all the above conditions are satisfied we have found a PPT. Then we check $s=2,3,...$ up to $s=7$ since $s>7$ gives $s^2>61$. Following this process, we have the following PPT:
+$s=6, t=5$:
+\begin{align*}
+  x &= 2st = 2(6)(5) = 60\\
+  y &= s^2-t^2 = 6^2 - 5^2 = 11\\
+  z &= s^2+t^2 = 6^2 + 5^2 = 61
+\end{align*}
+\end{document}
