@@ -1,0 +1,74 @@
+\documentclass{scrartcl}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,commath}
+\setkomafont{disposition}{\normalfont\bfseries}
+\renewcommand{\mod}[1]{\text{ (mod $#1$)}}
+
+\title{Number Theory}
+\subtitle{Homework 10}
+\author{Kenny Roffo}
+\date{Due April 18, 2016}
+
+\begin{document}
+\maketitle
+
+\textbf{1)} If $p$ is a prime and is the sum of three squares of three different primes, prove one of the three primes must be 3.
+
+Note that every non-3 prime is congruent to either 1 or 2$\mod{3}$ (any number congruent to 0$\mod{n}$ is divisible by $n$). What about the squares of primes? If a prime is congruent to $1\mod{3}$ then its square is congruent to $1^2\equiv1\mod{3}$. If a prime is congruent to $2\mod{3}$ then its square is congruent to $2^2\equiv4\equiv1\mod{3}$. So every prime's (not equal to 3) square is congruent to $1\mod{3}$. Consider the sum of the squares of three distinct primes. If none of the primes are 3, then the sum is congruent to
+$$1 + 1 + 1 \equiv 3 \equiv 0 \mod{3}$$
+so the sum is not prime. Thus if we have some prime $p$, which is equal to the sum of the squares of three distinct primes, then by the above result one of the primes must be 3.\\
+
+\textbf{2)} Prove that no number of the form $10^n+2$, $(n\in\mathbb{Z}^+)$ is the sum of two squares.\\
+
+We begin by taking note of the fact that any number of the form $10^n+2$ where $n$ is a positive integer has the form 1000...02. Thus the sum of the digits of such a number will always be 3. By our decimal representation lemma, this means the number is divisible by 3. This also means, however, the number is not divisible by 9. What this means, is that 3 is not only in the prime factorization of such a number, but its exponent is exactly 1. Therefore the prime factorization of any number of the form $10^n+2$ where $n$ is a positive integer contains a number congruent to 3$\mod{4}$ with an odd exponent, namely $3^1$. By a theorem shown in class, such a number can not a sum of two squares.\\
+
+\textbf{3)} Express 10001 as the sum of two squares in two different ways.\\
+
+The prime factorization of 10001 is $73\cdot137$. Both of these integers are congruent to 1$\mod{4}$ thus they are sums of squares, in fact
+$$73 = 8^2 + 3^2 \text{\hspace{1in}} 137 = 11^2 + 4^2$$
+Therefore, we have
+\begin{align*}
+  10001 &= 73\cdot137\\
+  &= \left(8^2 + 3^2\right)\left(11^2 + 4^2\right)\\
+  &= \left(8\cdot11 + 3\cdot4\right)^2 + \left(8\cdot4 - 3\cdot11\right)^2\\
+  &= 100^2 + 1^2\\
+\end{align*}
+However we also have
+\begin{align*}
+  10001 &= 73\cdot137\\
+  &= \left(8^2 + 3^2\right)\left(11^2 + 4^2\right)\\
+  &= \left(8\cdot11 - 3\cdot4\right)^2 + \left(8\cdot4 + 3\cdot11\right)^2\\
+  &= 76^2 + 65^2\\
+\end{align*}
+Therefore we have two sums of squares which equal 10001.\\
+
+\textbf{4)} Find a positive integer that has at least 3 different representatives as the sum of two squares.\\
+
+Since we can break down the product of two sums of squares into a sum of squares in two distinct ways (as in problem 3), we can simply choose any number made from the product of three sums of squares (or more). So let's pick some number by using three primes which are congruent to 1$\mod{4}$, say 5, 13 and 17. So our number is $5\cdot13\cdot17=1105$, and breaking down into sums of squares we have
+$$5\cdot13\cdot17 = \left(2^2 + 1^2\right)\left(2^2 + 3^2\right)\left(4^2+1^2\right)$$
+The left two sums can be combined in two different ways. The first
+\begin{align*}
+  \left(2^2 + 1^2\right)\left(2^2 + 3^2\right) &= \left(4 + 3\right)^2 + \left(6 - 2\right)^2\\
+  &= 7^2 + 4^2
+\end{align*}
+and the second
+\begin{align*}
+  \left(2^2 + 1^2\right)\left(2^2 + 3^2\right) &= \left(4 - 3\right)^2 + \left(6 + 2\right)^2\\
+  &= 1^2 + 8^2
+\end{align*}
+Now we can combine the third sum with each of these in two different ways each, giving us actually four different ways to write our number as a sum of two squares:
+\begin{align*}
+  5\cdot13\cdot17 &=  \left(7^2 + 4^2\right)\left(4^2+1^2\right)\\
+  &= \left(28 + 4\right)^2 + \left(7 - 16\right)^2\\
+  &= 32^2 + 9^2&\\
+  &= \left(28 + 4\right)^2 + \left(7 - 16\right)^2\\
+  &= 24^2 + 23^2\\
+  &= \left(1^2 + 8^2\right)\left(4^2+1^2\right)\\
+  &= \left(4 + 8\right)^2 + \left(1 - 32\right)^2\\
+  &= 12^2 + 31^2\\
+  &= \left(4 - 8\right)^2 + \left(1 + 32\right)^2\\
+  &= 4^2 + 33^2
+\end{align*}
+
+That is, $1105 = 32^2 + 9^2 = 24^2 + 23^2 = 12^2 + 31^2 = 4^2 + 33^2$.
+\end{document}
